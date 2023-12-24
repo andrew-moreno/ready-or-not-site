@@ -16,21 +16,42 @@ class MyApp extends StatelessWidget {
       builder: (context, child) => ResponsiveBreakpoints.builder(
         child: child!,
         breakpoints: [
-          const Breakpoint(start: 0, end: 450, name: MOBILE),
-          const Breakpoint(start: 451, end: 800, name: TABLET),
-          const Breakpoint(start: 801, end: 1920, name: DESKTOP),
-          const Breakpoint(start: 1921, end: double.infinity, name: '4K'),
+          const Breakpoint(start: 0, end: 500, name: MOBILE),
+          const Breakpoint(start: 501, end: 1100, name: TABLET),
+          const Breakpoint(start: 1101, end: double.infinity, name: DESKTOP),
         ],
       ),
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        elevatedButtonTheme: const ElevatedButtonThemeData(
+          style: ButtonStyle(
+            padding: MaterialStatePropertyAll(
+              EdgeInsets.symmetric(vertical: 20, horizontal: 30),
+            ),
+          ),
+        ),
+        inputDecorationTheme: const InputDecorationTheme(
+          contentPadding: EdgeInsets.symmetric(
+            vertical: 5,
+            horizontal: 12,
+          ),
+          hintStyle: TextStyle(
+            color: Colors.black,
+            fontFamily: "Poppins",
+            fontSize: 18,
+            fontWeight: FontWeight.w500,
+          ),
+          errorMaxLines: 2,
+        ),
         textTheme: const TextTheme(
           titleLarge: TextStyle(
             fontSize: 70,
+            fontFamily: "Times New Roman",
           ),
           titleMedium: TextStyle(
             fontSize: 40,
+            fontFamily: "Times New Roman",
           ),
           bodyLarge: TextStyle(
             fontSize: 20,
@@ -38,14 +59,7 @@ class MyApp extends StatelessWidget {
           bodyMedium: TextStyle(fontSize: 18),
         ),
       ),
-      home: const ResponsiveBreakpoints(
-        breakpoints: [
-          Breakpoint(start: 0, end: 480, name: MOBILE),
-          Breakpoint(start: 481, end: 1200, name: TABLET),
-          Breakpoint(start: 1201, end: double.infinity, name: DESKTOP),
-        ],
-        child: Home(title: 'Flutter Demo Home Page'),
-      ),
+      home: const Home(),
     );
   }
 }

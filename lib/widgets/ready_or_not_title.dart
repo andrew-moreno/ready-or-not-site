@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ready_or_not/constraints.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 class ReadyOrNotTitle extends StatelessWidget {
   const ReadyOrNotTitle({super.key});
@@ -9,40 +10,48 @@ class ReadyOrNotTitle extends StatelessWidget {
     return Stack(
       alignment: Alignment.bottomLeft,
       children: [
+        Image.asset(
+          "assets/images/title.jpg",
+          fit: BoxFit.fitWidth,
+        ),
         SizedBox(
           width: double.infinity,
-          child: Image.asset(
-            "assets/images/title.jpg",
-            fit: BoxFit.fitWidth,
-          ),
-        ),
-        Padding(
-          padding: kPadding,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "Ready or Not",
-                style: Theme.of(context)
-                    .textTheme
-                    .titleLarge!
-                    .copyWith(color: Colors.white),
+          child: FractionallySizedBox(
+            widthFactor: kWidthFraction,
+            child: Padding(
+              padding: const EdgeInsets.only(
+                bottom: kPaddingVertical,
               ),
-              Text(
-                "A book by Richard R. Moreno",
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyLarge!
-                    .copyWith(color: Colors.white),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: Text(
+                      "Ready or Not",
+                      style: Theme.of(context)
+                          .textTheme
+                          .titleLarge!
+                          .copyWith(color: Colors.white),
+                    ),
+                  ),
+                  Text(
+                    "A book by Richard R. Moreno",
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyLarge!
+                        .copyWith(color: Colors.white),
+                  ),
+                  Text(
+                    "Fetured in Pacific Yachting Magazine November, 2023",
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyLarge!
+                        .copyWith(color: Colors.white),
+                  )
+                ],
               ),
-              Text(
-                "Fetured in Pacific Yachting Magazine November, 2023",
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyLarge!
-                    .copyWith(color: Colors.white),
-              )
-            ],
+            ),
           ),
         ),
       ],

@@ -11,15 +11,17 @@ class Paypal extends StatelessWidget {
       alignment: Alignment.center,
       children: [
         SizedBox(
-          height: 500,
+          height: 410,
           width: double.infinity,
           child: Image.asset(
             "assets/images/title.jpg",
-            fit: BoxFit.fitWidth,
+            fit: BoxFit.cover,
           ),
         ),
         Padding(
-          padding: kPadding,
+          padding: const EdgeInsets.symmetric(
+            vertical: kPaddingVertical,
+          ),
           child: Center(
             child: Column(
               children: [
@@ -39,11 +41,7 @@ class Paypal extends StatelessWidget {
                 ),
                 const SizedBox(height: 40),
                 ElevatedButton(
-                  style: const ButtonStyle(
-                    padding: MaterialStatePropertyAll(
-                      EdgeInsets.symmetric(vertical: 20, horizontal: 30),
-                    ),
-                  ),
+                  style: Theme.of(context).elevatedButtonTheme.style,
                   onPressed: () async {
                     final Uri url = Uri.parse('https://flutter.dev');
                     if (!await launchUrl(url)) {
